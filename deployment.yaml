@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-ops 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: front-ops
+  template:
+    metadata:
+      labels:
+        app: front-ops
+    spec:
+      containers:
+        - name: front-ops
+          image: 192.168.1.10:8443/front-ops # 여기에서 React 프로젝트의 이미지로 변경
+          #command: ["sh", "-c", "cd /099 && npm install && npm start"]
+          ports:
+            - containerPort: 80
